@@ -7,8 +7,6 @@ export default function ArtPieces({ pieces }) {
       {pieces.map((piece) => {
         const { slug, imageSource, name, artist } = piece;
 
-        // console.log(slug, imageSource);
-
         return (
           <li key={slug}>
             <ArtPiecePreview image={imageSource} title={name} artist={artist} />
