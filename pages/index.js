@@ -1,36 +1,17 @@
-import useSWR from "swr";
 import Spotlight from "@/components/Spotlight";
+import Link from "next/link";
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
+export default function SpotlightPage({ pieces }) {
+  if (!pieces?.length) {
+    return <div>Loading...</div>;
+  }
 
-export default function HomePage() {
-  const URL = "https://example-apis.vercel.app/api/art";
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
 
-  const fetcher = async (url) => {
-    const res = await fetch(url);
-
-    if (!res.ok) {
-      const error = new Error("An error occurred while fetching the data.");
-      error.info = await res.json();
-      error.status = res.status;
-      throw error;
-    }
-
-    return res.json();
-  };
-
-  const { data, isLoading, error } = useSWR(URL, fetcher);
-
-  if (error) return <div>{error.message}</div>;
-  if (isLoading) return <div>loading...</div>;
-
-  const randomIndex = getRandomInt(data.length);
-  const spotlight = data[randomIndex];
-
-  // console.log(randomArtPiece);
-  console.log("Spotlight", spotlight);
+  const randomIndex = getRandomInt(pieces.length);
+  const spotlight = pieces[randomIndex];
 
   return (
     <div>
