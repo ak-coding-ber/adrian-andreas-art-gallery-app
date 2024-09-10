@@ -21,7 +21,6 @@ export default function SpotlightPage({ pieces }) {
         artist={spotlight.artist}
         title={spotlight.name}
       />
-      <Link href={"/art-pieces"}>Art pieces</Link>
     </div>
   );
 }
