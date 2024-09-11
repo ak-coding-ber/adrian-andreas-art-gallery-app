@@ -28,13 +28,13 @@ export default function App({ Component, pageProps }) {
 
   useEffect(() => {
     if (data) {
-      console.log("inside useEffect", data);
+      // console.log("inside useEffect", data);
       setPieces(data);
-      console.log("pieces inside useEffect", pieces);
+      // console.log("pieces inside useEffect", pieces);
     }
-  }, [data, pieces]);
+  }, [data]);
 
-  console.log("pieces outside useEffect", pieces);
+  // console.log("pieces outside useEffect", pieces);
 
   if (error) return <div>{error.message}</div>;
 
