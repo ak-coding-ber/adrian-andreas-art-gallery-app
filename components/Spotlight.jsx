@@ -1,4 +1,5 @@
 import Image from "next/image";
+import FavoriteButton from "./FavoriteButton";
 
 export default function Spotlight({ image, artist, title }) {
   return (
@@ -12,6 +13,7 @@ export default function Spotlight({ image, artist, title }) {
         width={240}
         height={300}
       />
+      <FavoriteButton />
     </>
   );
 }

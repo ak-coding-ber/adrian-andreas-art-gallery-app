@@ -1,12 +1,33 @@
 import GlobalStyle from "../styles";
 import useSWR from "swr";
+import Layout from "@/components/Layout";
 import { useState } from "react";
 import { useEffect } from "react";
-import Layout from "@/components/Layout";
+import { useImmerLocalStorageState } from "@/lib/hook/useImmerLocalStorageState";
 
 export default function App({ Component, pageProps }) {
   const URL = "https://example-apis.vercel.app/api/art";
-  const [loading, setLoading] = useState(true);
+
+  function handleToggleFavoriteButton(slug) {
+    updateArtPiecesInfo((draft) => {
+      const item = draft.find((item) => item.slug === slug);
+      if (item) {
+        item.isFavorite = !item.isFavorite; // Mutate draft, Immer handles immutability
+      }
+    });
+    // const currentPiece = artPiecesInfo.find((piece) => piece.slug === slug);
+    // if (!currentPiece) {
+    //   updateArtPiecesInfo([...artPiecesInfo, { slug: slug, isFavorite: true }]);
+    //   return;
+    // }
+    // updateArtPiecesInfo(
+    //   artPiecesInfo.map((piece) =>
+    //     piece.slug === slug
+    //       ? { slug: slug, isFavorite: !piece.isFavorite }
+    //       : piece
+    //   )
+    // );
+  }
 
   const fetcher = async (url) => {
     const res = await fetch(url);
@@ -17,31 +38,39 @@ export default function App({ Component, pageProps }) {
       error.status = res.status;
       throw error;
     }
-    // signal that the data fetch is complete and the page can be rendered
-    setLoading(false);
     return res.json();
   };
 
   const { data, isLoading, error } = useSWR(URL, fetcher);
 
   const [pieces, setPieces] = useState([]);
+  const [artPiecesInfo, updateArtPiecesInfo] = useImmerLocalStorageState(
+    "artPiecesInfo",
+    { defaultValue: [] }
+  );
 
   useEffect(() => {
     if (data) {
-      // console.log("inside useEffect", data);
       setPieces(data);
-      // console.log("pieces inside useEffect", pieces);
+      updateArtPiecesInfo(
+        data.map((piece) => ({ slug: piece.slug, isFavorite: false }))
+      );
     }
   }, [data]);
 
-  // console.log("pieces outside useEffect", pieces);
+  // console.log("artPiecesInfo", artPiecesInfo);
 
   if (error) return <div>{error.message}</div>;
 
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} pieces={pieces} />
+      <Component
+        {...pageProps}
+        pieces={pieces}
+        artPiecesInfo={artPiecesInfo}
+        onToggleFavorite={handleToggleFavoriteButton}
+      />
       <Layout />
     </>
   );
