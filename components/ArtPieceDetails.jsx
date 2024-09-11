@@ -14,7 +14,7 @@ export default function ArtPieceDetails({ image, title, artist, year, genre }) {
       />
       <ul>
         <li>
-          {artist}: '{title}'
+          {artist}: {title}
         </li>
         <li>year: {year}</li>
         <li>genre: {genre}</li>
