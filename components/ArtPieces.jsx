@@ -1,5 +1,15 @@
 import ArtPiecePreview from "./ArtPiecePreview";
 import Link from "next/link";
+import styled from "styled-components";
+
+const StyledList = styled.ul`
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(480px));
+  grid-gap: 50px;
+  padding: 50px;
+`;
 
 export default function ArtPieces({
   slug,
@@ -8,7 +18,7 @@ export default function ArtPieces({
   onToggleFavorite,
 }) {
   return (
-    <ul>
+    <StyledList>
       {pieces.map((piece) => {
         const { slug, imageSource, name, artist } = piece;
 
@@ -25,6 +35,6 @@ export default function ArtPieces({
           </li>
         );
       })}
-    </ul>
+    </StyledList>
   );
 }
