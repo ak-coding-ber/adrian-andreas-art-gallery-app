@@ -1,7 +1,14 @@
 import Image from "next/image";
 import FavoriteButton from "./FavoriteButton";
 
-export default function Spotlight({ image, artist, title }) {
+export default function Spotlight({
+  image,
+  artist,
+  title,
+  artPiecesInfo,
+  onToggleFavorite,
+  slug,
+}) {
   return (
     <>
       <p>
@@ -13,7 +20,11 @@ export default function Spotlight({ image, artist, title }) {
         width={240}
         height={300}
       />
-      <FavoriteButton />
+      <FavoriteButton
+        artPiecesInfo={artPiecesInfo}
+        onToggleFavorite={onToggleFavorite}
+        slug={slug}
+      />
     </>
   );
 }

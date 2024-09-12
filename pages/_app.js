@@ -8,25 +8,22 @@ import { useImmerLocalStorageState } from "@/lib/hook/useImmerLocalStorageState"
 export default function App({ Component, pageProps }) {
   const URL = "https://example-apis.vercel.app/api/art";
 
-  function handleToggleFavoriteButton(slug) {
-    updateArtPiecesInfo((draft) => {
-      const item = draft.find((item) => item.slug === slug);
-      if (item) {
-        item.isFavorite = !item.isFavorite; // Mutate draft, Immer handles immutability
+  const [artPiecesInfo, updateArtPiecesInfo] = useImmerLocalStorageState(
+    "artPiecesInfo",
+    { defaultValue: [] }
+  );
+
+  function handleToggleFavoriteButton(slug, artPiecesInfo) {
+    const updatedArtPiecesInfo = artPiecesInfo.map((piece) => {
+      if (piece.slug !== slug) {
+        return piece;
       }
+      return {
+        ...piece,
+        isFavorite: !piece.isFavorite,
+      };
     });
-    // const currentPiece = artPiecesInfo.find((piece) => piece.slug === slug);
-    // if (!currentPiece) {
-    //   updateArtPiecesInfo([...artPiecesInfo, { slug: slug, isFavorite: true }]);
-    //   return;
-    // }
-    // updateArtPiecesInfo(
-    //   artPiecesInfo.map((piece) =>
-    //     piece.slug === slug
-    //       ? { slug: slug, isFavorite: !piece.isFavorite }
-    //       : piece
-    //   )
-    // );
+    updateArtPiecesInfo(updatedArtPiecesInfo);
   }
 
   const fetcher = async (url) => {
@@ -43,31 +40,28 @@ export default function App({ Component, pageProps }) {
 
   const { data, isLoading, error } = useSWR(URL, fetcher);
 
-  const [pieces, setPieces] = useState([]);
-  const [artPiecesInfo, updateArtPiecesInfo] = useImmerLocalStorageState(
-    "artPiecesInfo",
-    { defaultValue: [] }
-  );
-
   useEffect(() => {
     if (data) {
-      setPieces(data);
-      updateArtPiecesInfo(
-        data.map((piece) => ({ slug: piece.slug, isFavorite: false }))
-      );
+      if (artPiecesInfo.length === 0) {
+        // Only set the data if the localStorage doesn't have it yet
+        updateArtPiecesInfo(
+          data.map((piece) => ({ slug: piece.slug, isFavorite: false }))
+        );
+      }
     }
   }, [data]);
 
-  // console.log("artPiecesInfo", artPiecesInfo);
-
   if (error) return <div>{error.message}</div>;
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <>
       <GlobalStyle />
       <Component
         {...pageProps}
-        pieces={pieces}
+        pieces={data}
         artPiecesInfo={artPiecesInfo}
         onToggleFavorite={handleToggleFavoriteButton}
       />

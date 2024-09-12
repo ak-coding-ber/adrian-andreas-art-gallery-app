@@ -10,13 +10,21 @@ const StyledButton = styled.button`
 
 export default function FavoriteButton({
   slug,
-  isFavorite,
   onToggleFavorite,
   artPiecesInfo,
 }) {
+  const selectedPiece = artPiecesInfo.find((piece) => piece.slug === slug);
+  const isFavorite = selectedPiece?.isFavorite;
+
   return (
     <>
-      <StyledButton onClick={() => onToggleFavorite(slug)}>
+      <StyledButton
+        type="button"
+        onClick={(e) => {
+          e.preventDefault();
+          onToggleFavorite(slug, artPiecesInfo);
+        }}
+      >
         <Image
           src={isFavorite ? "/heart_black.png" : "/heart_transparent.png"}
           alt="like button"
