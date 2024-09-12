@@ -1,10 +1,25 @@
 import ArtPiecePreview from "./ArtPiecePreview";
 import Link from "next/link";
+import styled from "styled-components";
 
-export default function ArtPieces({ pieces }) {
-  // console.log(pieces);
+const StyledList = styled.ul`
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(480px));
+  grid-gap: 50px;
+  padding: 50px;
+  margin-bottom: 5%;
+`;
+
+export default function ArtPieces({
+  slug,
+  pieces,
+  artPiecesInfo,
+  onToggleFavorite,
+}) {
   return (
-    <ul>
+    <StyledList>
       {pieces.map((piece) => {
         const { slug, imageSource, name, artist } = piece;
 
@@ -15,10 +30,12 @@ export default function ArtPieces({ pieces }) {
               title={name}
               artist={artist}
               slug={slug}
+              artPiecesInfo={artPiecesInfo}
+              onToggleFavorite={onToggleFavorite}
             />
           </li>
         );
       })}
-    </ul>
+    </StyledList>
   );
 }

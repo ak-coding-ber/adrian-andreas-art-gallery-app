@@ -2,7 +2,11 @@ import ArtPieceDetails from "@/components/ArtPieceDetails";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-export default function ArtPieceDetailsPage({ pieces }) {
+export default function ArtPieceDetailsPage({
+  pieces,
+  artPiecesInfo,
+  onToggleFavorite,
+}) {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -11,12 +15,8 @@ export default function ArtPieceDetailsPage({ pieces }) {
     return null;
   }
 
-  const queriedPiece = pieces.find((piece) => piece.slug === slug);
-  const { imageSource, name, artist, year, genre } = queriedPiece;
-
-  console.log("pieces inside ArtPeiceDetails", pieces);
-  console.log("slug", slug);
-  console.log("queriedPiece", queriedPiece);
+  // const queriedPiece = pieces.find((piece) => piece.slug === slug);
+  const { imageSource, name, artist, year, genre } = currentArtPiece;
 
   return (
     <>
@@ -26,6 +26,9 @@ export default function ArtPieceDetailsPage({ pieces }) {
         artist={artist}
         year={year}
         genre={genre}
+        artPiecesInfo={artPiecesInfo}
+        onToggleFavorite={onToggleFavorite}
+        slug={slug}
       />
     </>
   );

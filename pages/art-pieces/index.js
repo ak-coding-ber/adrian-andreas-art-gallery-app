@@ -1,10 +1,24 @@
 import ArtPieces from "@/components/ArtPieces";
+import styled from "styled-components";
 
-export default function ArtPiecesPage({ pieces }) {
+const StyledHeading = styled.h1`
+  font-size: 40px;
+  margin-left: 50px;
+`;
+
+export default function ArtPiecesPage({
+  pieces,
+  artPiecesInfo,
+  onToggleFavorite,
+}) {
   return (
     <div>
-      <h1>Art Gallery</h1>
-      <ArtPieces pieces={pieces} />
+      <StyledHeading>Art Gallery</StyledHeading>
+      <ArtPieces
+        pieces={pieces}
+        artPiecesInfo={artPiecesInfo}
+        onToggleFavorite={onToggleFavorite}
+      />
     </div>
   );
 }
