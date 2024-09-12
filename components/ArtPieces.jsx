@@ -1,5 +1,5 @@
 import ArtPiecePreview from "./ArtPiecePreview";
-import Link from "next/link";
+// import Link from "next/link";
 import styled from "styled-components";
 
 const StyledList = styled.ul`
@@ -13,7 +13,7 @@ const StyledList = styled.ul`
 `;
 
 export default function ArtPieces({
-  slug,
+  // slug,
   pieces,
   artPiecesInfo,
   onToggleFavorite,

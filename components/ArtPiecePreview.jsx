@@ -18,7 +18,7 @@ export default function ArtPiecePreview({
   artPiecesInfo,
   onToggleFavorite,
 }) {
-  const selectedPiece = artPiecesInfo.find((piece) => piece.slug === slug);
+  // const selectedPiece = artPiecesInfo.find((piece) => piece.slug === slug);
 
   // console.log(selectedPiece.isFavorite);
   // console.log("slug", slug, "isFavorite", isFavorite);
@@ -43,8 +43,9 @@ export default function ArtPiecePreview({
         </p>
         <br />
         <FavoriteButton
-          isFavorite={selectedPiece.isFavorite}
+          // isFavorite={selectedPiece.isFavorite}
           onToggleFavorite={onToggleFavorite}
+          artPiecesInfo={artPiecesInfo}
           slug={slug}
         />
       </StyledContainer>
