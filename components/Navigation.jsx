@@ -32,7 +32,6 @@ export default function Navigation() {
         <Link href={"/favorites"} className="link">
           Favorites
         </Link>
-        {/* <Link href={"../pages/art-pieces"}>Art pieces</Link> */}
       </StyledLayout>
     </>
   );

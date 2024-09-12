@@ -49,6 +49,7 @@ export default function App({ Component, pageProps }) {
             ...piece,
             slug: piece.slug,
             isFavorite: false,
+            comments: [],
           }))
         );
       }
@@ -68,8 +69,9 @@ export default function App({ Component, pageProps }) {
         pieces={data}
         artPiecesInfo={artPiecesInfo}
         onToggleFavorite={handleToggleFavoriteButton}
+        updateArtPiecesInfo={updateArtPiecesInfo}
       />
-      <Layout />
+      {/* <Layout /> */}
     </>
   );
 }
