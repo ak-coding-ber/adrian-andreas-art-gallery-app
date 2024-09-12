@@ -9,6 +9,7 @@ const StyledList = styled.ul`
   grid-template-rows: repeat(auto-fit, minmax(480px));
   grid-gap: 50px;
   padding: 50px;
+  margin-bottom: 5%;
 `;
 
 export default function ArtPieces({
