@@ -45,7 +45,11 @@ export default function App({ Component, pageProps }) {
       if (artPiecesInfo.length === 0) {
         // Only set the data if the localStorage doesn't have it yet
         updateArtPiecesInfo(
-          data.map((piece) => ({ slug: piece.slug, isFavorite: false }))
+          data.map((piece) => ({
+            ...piece,
+            slug: piece.slug,
+            isFavorite: false,
+          }))
         );
       }
     }
