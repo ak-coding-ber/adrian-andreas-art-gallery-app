@@ -17,7 +17,7 @@ export default function SpotlightPage({
   useEffect(() => {
     const randomIndex = getRandomInt(pieces.length);
     setRandomArtPiece(pieces[randomIndex]);
-  }, []);
+  }, [pieces]);
 
   if (!pieces) {
     return <div>Loading...</div>;
