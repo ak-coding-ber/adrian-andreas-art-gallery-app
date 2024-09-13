@@ -1,7 +1,6 @@
 import GlobalStyle from "../styles";
 import useSWR from "swr";
 import Layout from "@/components/Layout";
-import { useState } from "react";
 import { useEffect } from "react";
 import { useImmerLocalStorageState } from "@/lib/hook/useImmerLocalStorageState";
 

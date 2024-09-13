@@ -17,7 +17,7 @@ export default function ArtPieceDetailsPage({
     return null;
   }
 
-  const { imageSource, name, artist, year, genre, comments } = currentArtPiece;
+  const { imageSource, name, artist, colors, comments } = currentArtPiece;
 
   console.log("Current Art Piece", currentArtPiece);
 
@@ -27,8 +27,7 @@ export default function ArtPieceDetailsPage({
         image={imageSource}
         title={name}
         artist={artist}
-        year={year}
-        genre={genre}
+        colors={colors}
         artPiecesInfo={artPiecesInfo}
         onToggleFavorite={onToggleFavorite}
         slug={slug}
