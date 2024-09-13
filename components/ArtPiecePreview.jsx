@@ -18,16 +18,11 @@ export default function ArtPiecePreview({
   artPiecesInfo,
   onToggleFavorite,
 }) {
-  // const selectedPiece = artPiecesInfo.find((piece) => piece.slug === slug);
-
-  // console.log(selectedPiece.isFavorite);
-  // console.log("slug", slug, "isFavorite", isFavorite);
-  // console.log("onToggleFavorite", onToggleFavorite);
-
   return (
     <>
       <Link href={`/art-pieces/${slug}`}>
         <Image
+          data-testid="preview-image"
           src={image}
           alt={`image of ${title} from ${artist}`}
           width={480}

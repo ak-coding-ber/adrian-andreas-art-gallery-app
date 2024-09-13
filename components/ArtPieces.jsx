@@ -12,12 +12,7 @@ const StyledList = styled.ul`
   margin-bottom: 5%;
 `;
 
-export default function ArtPieces({
-  // slug,
-  pieces,
-  artPiecesInfo,
-  onToggleFavorite,
-}) {
+export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
   return (
     <StyledList>
       {pieces.map((piece) => {
@@ -32,7 +27,6 @@ export default function ArtPieces({
               slug={slug}
               artPiecesInfo={artPiecesInfo}
               onToggleFavorite={onToggleFavorite}
-              // onSubmitComment={onSubmitComment}
             />
           </li>
         );
