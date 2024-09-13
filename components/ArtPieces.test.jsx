@@ -25,15 +25,24 @@ afterAll(() => {
 //........................................
 
 describe("ArtPieces Component", () => {
-  test("All art pieces are displayed as a list.", () => {
+  beforeEach(() => {
+    // Render the component once before each test
     render(<ArtPieces pieces={data} artPiecesInfo={data} />);
+  });
+  test("All art pieces are displayed as a list.", () => {
     const allListItems = screen.getAllByRole("listitem");
     expect(allListItems.length).toBe(data.length);
   });
 
   test("Each art piece's image is displayed.", () => {
-    render(<ArtPieces pieces={data} artPiecesInfo={data} />);
     const allImages = screen.getAllByTestId("preview-image");
     expect(allImages.length).toBe(data.length);
+  });
+
+  test("Each art piece's title is displayed.", () => {
+    data.forEach((piece) => {
+      const artistElement = screen.getByText(new RegExp(piece.artist, "i"));
+      expect(artistElement).toBeInTheDocument();
+    });
   });
 });

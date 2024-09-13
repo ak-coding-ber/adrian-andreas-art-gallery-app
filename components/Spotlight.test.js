@@ -67,12 +67,10 @@ describe("Spotlight Component", () => {
       />
     );
 
-    // Use a custom function matcher to check if the artist name exists in the paragraph
     const paragraphElement = screen.getByText((content, element) => {
       return content.includes(artPiece.artist);
     });
 
-    // Assert that the paragraph containing the artist's name is rendered
     expect(paragraphElement).toBeInTheDocument();
   });
 });
