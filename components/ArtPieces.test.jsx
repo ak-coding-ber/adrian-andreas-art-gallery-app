@@ -41,6 +41,13 @@ describe("ArtPieces Component", () => {
 
   test("Each art piece's title is displayed.", () => {
     data.forEach((piece) => {
+      const artistElement = screen.getByText(new RegExp(piece.name, "i"));
+      expect(artistElement).toBeInTheDocument();
+    });
+  });
+
+  test("Each art piece's artist is displayed.", () => {
+    data.forEach((piece) => {
       const artistElement = screen.getByText(new RegExp(piece.artist, "i"));
       expect(artistElement).toBeInTheDocument();
     });
