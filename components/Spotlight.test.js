@@ -36,7 +36,7 @@ const artPiecesInfo = [
 
 const artPiece = artPiecesInfo[0];
 
-test("The art piece image is displayed", () => {
+it("The art piece image is displayed", () => {
   render(
     <Spotlight
       image={artPiece.imageSource}
@@ -47,6 +47,9 @@ test("The art piece image is displayed", () => {
       slug={artPiece.slug}
     />
   );
+
+  const imageElement = screen.getByTestId("spotlight-image");
+  expect(imageElement).toBeInTheDocument();
 });
 
 test("the art piece artist is displayed", () => {

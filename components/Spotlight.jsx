@@ -22,6 +22,7 @@ export default function Spotlight({
     <>
       <Link href={`/art-pieces/${slug}`}>
         <Image
+          data-testid="spotlight-image"
           src={image}
           alt={`image of ${title} from ${artist}`}
           width={240}
