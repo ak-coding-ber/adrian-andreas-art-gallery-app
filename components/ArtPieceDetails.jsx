@@ -10,12 +10,20 @@ const StyledContainer = styled.div`
   align-items: center;
 `;
 
+const StyledColorCircle = styled.div`
+  background-color: ${({ $color }) => $color};
+  width: 3rem;
+  height: 3rem;
+  border: solid 1px gray;
+  border-radius: 50%;
+  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+`;
+
 export default function ArtPieceDetails({
   image,
   title,
   artist,
-  year,
-  genre,
+  colors,
   artPiecesInfo,
   onToggleFavorite,
   slug,
@@ -30,6 +38,7 @@ export default function ArtPieceDetails({
         width={480}
         height={600}
       />
+
       <StyledContainer>
         <p>
           <strong>{`'${title}'`}</strong>
@@ -42,6 +51,16 @@ export default function ArtPieceDetails({
           artPiecesInfo={artPiecesInfo}
           slug={slug}
         />
+      </StyledContainer>
+
+      <StyledContainer>
+        {colors.map((color, index) => {
+          return (
+            <div key={index}>
+              <StyledColorCircle $color={color} />
+            </div>
+          );
+        })}
       </StyledContainer>
     </>
   );
