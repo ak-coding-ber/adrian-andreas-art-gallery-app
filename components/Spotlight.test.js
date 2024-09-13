@@ -36,41 +36,43 @@ const artPiecesInfo = [
 
 const artPiece = artPiecesInfo[0];
 
-it("The art piece image is displayed", () => {
-  render(
-    <Spotlight
-      image={artPiece.imageSource}
-      altText={"Test Text"}
-      artist={artPiece.artist}
-      title={artPiece.name}
-      artPiecesInfo={artPiecesInfo}
-      slug={artPiece.slug}
-    />
-  );
+describe("Spotlight Component", () => {
+  test("The art piece image is displayed.", () => {
+    render(
+      <Spotlight
+        image={artPiece.imageSource}
+        altText={"Test Text"}
+        artist={artPiece.artist}
+        title={artPiece.name}
+        artPiecesInfo={artPiecesInfo}
+        slug={artPiece.slug}
+      />
+    );
 
-  const imageElement = screen.getByTestId("spotlight-image");
-  expect(imageElement).toBeInTheDocument();
-});
-
-test("the art piece artist is displayed", () => {
-  const expectedText = artPiece.artist;
-
-  render(
-    <Spotlight
-      image={artPiece.imageSource}
-      altText={"Test Text"}
-      artist={artPiece.artist}
-      title={artPiece.name}
-      artPiecesInfo={artPiecesInfo}
-      slug={artPiece.slug}
-    />
-  );
-
-  // Use a custom function matcher to check if the artist name exists in the paragraph
-  const paragraphElement = screen.getByText((content, element) => {
-    return content.includes(artPiece.artist);
+    const imageElement = screen.getByTestId("spotlight-image");
+    expect(imageElement).toBeInTheDocument();
   });
 
-  // Assert that the paragraph containing the artist's name is rendered
-  expect(paragraphElement).toBeInTheDocument();
+  test("The art piece artist is displayed.", () => {
+    const expectedText = artPiece.artist;
+
+    render(
+      <Spotlight
+        image={artPiece.imageSource}
+        altText={"Test Text"}
+        artist={artPiece.artist}
+        title={artPiece.name}
+        artPiecesInfo={artPiecesInfo}
+        slug={artPiece.slug}
+      />
+    );
+
+    // Use a custom function matcher to check if the artist name exists in the paragraph
+    const paragraphElement = screen.getByText((content, element) => {
+      return content.includes(artPiece.artist);
+    });
+
+    // Assert that the paragraph containing the artist's name is rendered
+    expect(paragraphElement).toBeInTheDocument();
+  });
 });
