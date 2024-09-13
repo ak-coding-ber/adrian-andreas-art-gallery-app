@@ -32,6 +32,7 @@ export default function ArtPieces({
               slug={slug}
               artPiecesInfo={artPiecesInfo}
               onToggleFavorite={onToggleFavorite}
+              // onSubmitComment={onSubmitComment}
             />
           </li>
         );

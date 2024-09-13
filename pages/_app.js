@@ -49,11 +49,12 @@ export default function App({ Component, pageProps }) {
             ...piece,
             slug: piece.slug,
             isFavorite: false,
+            comments: [],
           }))
         );
       }
     }
-  }, [data]);
+  });
 
   if (error) return <div>{error.message}</div>;
   if (isLoading) {
@@ -68,6 +69,7 @@ export default function App({ Component, pageProps }) {
         pieces={data}
         artPiecesInfo={artPiecesInfo}
         onToggleFavorite={handleToggleFavoriteButton}
+        updateArtPiecesInfo={updateArtPiecesInfo}
       />
       <Layout />
     </>

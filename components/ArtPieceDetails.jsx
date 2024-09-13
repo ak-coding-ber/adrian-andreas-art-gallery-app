@@ -1,6 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import FavoriteButton from "./FavoriteButton";
+import styled from "styled-components";
+
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 export default function ArtPieceDetails({
   image,
@@ -22,18 +30,19 @@ export default function ArtPieceDetails({
         width={480}
         height={600}
       />
-      <FavoriteButton
-        onToggleFavorite={onToggleFavorite}
-        slug={slug}
-        artPiecesInfo={artPiecesInfo}
-      />
-      <ul>
-        <li>
-          {artist}: {title}
-        </li>
-        <li>year: {year}</li>
-        <li>genre: {genre}</li>
-      </ul>
+      <StyledContainer>
+        <p>
+          <strong>{`'${title}'`}</strong>
+          <br />
+          {` _ ${artist}`}
+        </p>
+        <br />
+        <FavoriteButton
+          onToggleFavorite={onToggleFavorite}
+          artPiecesInfo={artPiecesInfo}
+          slug={slug}
+        />
+      </StyledContainer>
     </>
   );
 }

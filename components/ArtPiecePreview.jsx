@@ -43,7 +43,6 @@ export default function ArtPiecePreview({
         </p>
         <br />
         <FavoriteButton
-          // isFavorite={selectedPiece.isFavorite}
           onToggleFavorite={onToggleFavorite}
           artPiecesInfo={artPiecesInfo}
           slug={slug}
