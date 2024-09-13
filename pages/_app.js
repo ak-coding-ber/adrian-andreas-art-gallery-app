@@ -54,7 +54,7 @@ export default function App({ Component, pageProps }) {
         );
       }
     }
-  }, [data]);
+  });
 
   if (error) return <div>{error.message}</div>;
   if (isLoading) {
@@ -71,7 +71,7 @@ export default function App({ Component, pageProps }) {
         onToggleFavorite={handleToggleFavoriteButton}
         updateArtPiecesInfo={updateArtPiecesInfo}
       />
-      {/* <Layout /> */}
+      <Layout />
     </>
   );
 }

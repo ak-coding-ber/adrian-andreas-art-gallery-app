@@ -1,11 +1,6 @@
-import styled from "styled-components";
-
-const StyledForm = styled.form`
-  margin-bottom: 500px;
-`;
+import moment from "moment";
 
 export default function CommentForm({
-  //   onSubmitComment,
   artPiecesInfo,
   slug,
   updateArtPiecesInfo,
@@ -14,6 +9,9 @@ export default function CommentForm({
     event.preventDefault();
     const formElements = event.target.elements;
     const comment = formElements.userInput.value;
+    const formattedDate = moment().format("DD-MM-YYYY, HH:mm");
+
+    // console.log(comment);
 
     const updatedArtPiecesInfo = artPiecesInfo.map((piece) => {
       if (piece.slug !== slug) {
@@ -21,7 +19,10 @@ export default function CommentForm({
       }
       return {
         ...piece,
-        comments: [...piece.comments, comment],
+        comments: [
+          ...piece.comments,
+          { commentText: comment, time: formattedDate },
+        ],
       };
     });
     updateArtPiecesInfo(updatedArtPiecesInfo);
@@ -30,7 +31,7 @@ export default function CommentForm({
 
   return (
     <>
-      <StyledForm onSubmit={handleSubmitComment}>
+      <form onSubmit={handleSubmitComment}>
         <label htmlFor="textfield">Add comment:</label>
         <input
           name="userInput"
@@ -39,7 +40,7 @@ export default function CommentForm({
           placeholder="type here..."
         />
         <button type="submit">Send</button>
-      </StyledForm>
+      </form>
     </>
   );
 }

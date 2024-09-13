@@ -1,5 +1,5 @@
 import { uid } from "uid";
-import styled from "styled-components";
+// import styled from "styled-components";
 
 // const StyledList = styled.ul`
 //   margin-bottom: 500px;
@@ -14,9 +14,16 @@ export default function Comments({ comments }) {
           if (comments.length === 0) {
             return null;
           }
-          return <li key={uid()}>{comment}</li>;
+          return (
+            <li key={uid()}>
+              <p>{comment.commentText}</p>
+              <p>{comment.time}</p>
+            </li>
+          );
         })}
       </ul>
     </>
   );
 }
+
+// {comment}
