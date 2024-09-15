@@ -2,6 +2,8 @@ import { uid } from "uid";
 import styled from "styled-components";
 
 const StyledList = styled.ul`
+  display: flex;
+  flex-direction: column;
   list-style: none;
   background-color: lightgray;
   width: 380px;
@@ -10,6 +12,12 @@ const StyledList = styled.ul`
   margin-left: -6%;
   border-radius: 15px;
   margin-bottom: 10px;
+`;
+
+const StyledComment = styled.p`
+  // text-wrap: wrap;
+  // width: 100%;
+  // white-space: nowrap;
 `;
 
 const StyledDate = styled.p`
@@ -27,7 +35,7 @@ export default function Comments({ comments }) {
           }
           return (
             <StyledList key={uid()}>
-              <p>{comment.commentText}</p>
+              <StyledComment>{comment.commentText}</StyledComment>
               <StyledDate>{comment.time}</StyledDate>
             </StyledList>
           );

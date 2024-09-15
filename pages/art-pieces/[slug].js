@@ -9,7 +9,7 @@ const StyledContainerPage = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10%;
+  margin-bottom: 20%;
   padding-left: 50%;
   padding-right: 50%;
   width: 60%;
