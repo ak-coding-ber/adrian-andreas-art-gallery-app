@@ -3,26 +3,32 @@ import Link from "next/link";
 import FavoriteButton from "./FavoriteButton";
 import styled from "styled-components";
 
-const StyledContainerArtPieceInfo = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 320px;
-`;
-
 const StyledContainerArtPiece = styled.div`
   margin-bottom: 50%;
+  :hover .fixed-height-image {
+    transform: scale(1.1);
+  }
+
   .fixed-height-image {
     height: 480px;
     width: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease-in-out;
   }
 `;
 
 const StyledContainerImage = styled.div`
   width: 320px;
   height: 480px;
+  overflow: hidden;
+`;
+
+const StyledContainerArtPieceInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 320px;
 `;
 
 export default function ArtPiecePreview({

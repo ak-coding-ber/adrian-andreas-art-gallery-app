@@ -9,7 +9,10 @@ const StyledContainerPage = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-height: 30%;
+  margin-bottom: 10%;
+  padding-left: 50%;
+  padding-right: 50%;
+  width: 60%;
 `;
 
 export default function ArtPieceDetailsPage({
@@ -38,7 +41,11 @@ export default function ArtPieceDetailsPage({
         onToggleFavorite={onToggleFavorite}
         slug={slug}
       />
+      <br />
+      <br />
       <Comments comments={comments} />
+      <br />
+      <br />
       <CommentForm
         artPiecesInfo={artPiecesInfo}
         slug={slug}

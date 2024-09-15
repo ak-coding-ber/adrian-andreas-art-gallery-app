@@ -1,4 +1,12 @@
 import moment from "moment";
+import styled from "styled-components";
+
+const StyledFormContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 380px;
+  justify-content: space-between;
+`;
 
 export default function CommentForm({
   artPiecesInfo,
@@ -33,13 +41,18 @@ export default function CommentForm({
     <>
       <form onSubmit={handleSubmitComment}>
         <label htmlFor="textfield">Add comment:</label>
-        <input
-          name="userInput"
-          id="textfield "
-          type="text"
-          placeholder="type here..."
-        />
-        <button type="submit">Send</button>
+        <br />
+        <br />
+        <StyledFormContainer>
+          <input
+            name="userInput"
+            id="textfield "
+            type="text"
+            style={{ width: "300px" }}
+            placeholder="type here..."
+          />
+          <button type="submit">Send</button>
+        </StyledFormContainer>
       </form>
     </>
   );
