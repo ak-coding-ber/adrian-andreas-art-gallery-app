@@ -3,11 +3,20 @@ import FavoriteButton from "./FavoriteButton";
 import Link from "next/link";
 import styled from "styled-components";
 
-const StyledContainer = styled.div`
+const StyledContainerArtPieceInfo = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  max-width: 320px;
+`;
+
+const StyledContainerArtPiece = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50%;
 `;
 
 export default function Spotlight({
@@ -19,17 +28,17 @@ export default function Spotlight({
   slug,
 }) {
   return (
-    <>
+    <StyledContainerArtPiece>
       <Link href={`/art-pieces/${slug}`}>
         <Image
           data-testid="spotlight-image"
           src={image}
           alt={`image of ${title} from ${artist}`}
-          width={240}
-          height={300}
+          width={320}
+          height={480}
         />
       </Link>
-      <StyledContainer>
+      <StyledContainerArtPieceInfo>
         <p>
           <strong>{`'${title}'`}</strong>
           <br />
@@ -41,7 +50,7 @@ export default function Spotlight({
           artPiecesInfo={artPiecesInfo}
           slug={slug}
         />
-      </StyledContainer>
-    </>
+      </StyledContainerArtPieceInfo>
+    </StyledContainerArtPiece>
   );
 }

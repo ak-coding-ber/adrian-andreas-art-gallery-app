@@ -2,6 +2,15 @@ import ArtPieceDetails from "@/components/ArtPieceDetails";
 import { useRouter } from "next/router";
 import CommentForm from "@/components/CommentForm";
 import Comments from "@/components/Comments";
+import styled from "styled-components";
+
+const StyledContainerPage = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-height: 30%;
+`;
 
 export default function ArtPieceDetailsPage({
   pieces,
@@ -22,7 +31,7 @@ export default function ArtPieceDetailsPage({
   console.log("Current Art Piece", currentArtPiece);
 
   return (
-    <>
+    <StyledContainerPage>
       <ArtPieceDetails
         image={imageSource}
         title={name}
@@ -38,6 +47,6 @@ export default function ArtPieceDetailsPage({
         slug={slug}
         updateArtPiecesInfo={updateArtPiecesInfo}
       />
-    </>
+    </StyledContainerPage>
   );
 }

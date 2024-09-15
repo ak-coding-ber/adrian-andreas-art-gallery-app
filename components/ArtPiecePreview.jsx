@@ -3,11 +3,26 @@ import Link from "next/link";
 import FavoriteButton from "./FavoriteButton";
 import styled from "styled-components";
 
-const StyledContainer = styled.div`
+const StyledContainerArtPieceInfo = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  max-width: 320px;
+`;
+
+const StyledContainerArtPiece = styled.div`
+  margin-bottom: 50%;
+  .fixed-height-image {
+    height: 480px;
+    width: 100%;
+    object-fit: cover;
+  }
+`;
+
+const StyledContainerImage = styled.div`
+  width: 320px;
+  height: 480px;
 `;
 
 export default function ArtPiecePreview({
@@ -19,18 +34,20 @@ export default function ArtPiecePreview({
   onToggleFavorite,
 }) {
   return (
-    <>
+    <StyledContainerArtPiece>
       <Link href={`/art-pieces/${slug}`}>
-        <Image
-          data-testid="preview-image"
-          src={image}
-          alt={`image of ${title} from ${artist}`}
-          width={480}
-          height={320}
-          layout="responsive"
-        />
+        <StyledContainerImage>
+          <Image
+            data-testid="preview-image"
+            src={image}
+            alt={`image of ${title} from ${artist}`}
+            className="fixed-height-image"
+            width={320}
+            height={480}
+          />
+        </StyledContainerImage>
       </Link>
-      <StyledContainer>
+      <StyledContainerArtPieceInfo>
         <p>
           <strong>{`'${title}'`}</strong>
           <br />
@@ -42,7 +59,7 @@ export default function ArtPiecePreview({
           artPiecesInfo={artPiecesInfo}
           slug={slug}
         />
-      </StyledContainer>
-    </>
+      </StyledContainerArtPieceInfo>
+    </StyledContainerArtPiece>
   );
 }

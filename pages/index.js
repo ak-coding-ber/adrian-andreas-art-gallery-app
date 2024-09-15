@@ -1,11 +1,25 @@
 import Spotlight from "@/components/Spotlight";
-import { useEffect } from "react";
 import styled from "styled-components";
+import { useEffect } from "react";
 import { useState } from "react";
 
 const StyledHeading = styled.h1`
-  font-size: 40px;
-  margin-left: 50px;
+  display: flex;
+  justify-content: center;
+  font-size: 65px;
+  animation: colorChange 5s infinite alternate;
+
+  @keyframes colorChange {
+    0% {
+      color: red;
+    }
+    50% {
+      color: green;
+    }
+    100% {
+      color: blue;
+    }
+  }
 `;
 
 export default function SpotlightPage({
