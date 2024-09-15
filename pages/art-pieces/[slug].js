@@ -13,7 +13,6 @@ const StyledContainerPage = styled.div`
 `;
 
 export default function ArtPieceDetailsPage({
-  pieces,
   artPiecesInfo,
   onToggleFavorite,
   updateArtPiecesInfo,
@@ -27,8 +26,6 @@ export default function ArtPieceDetailsPage({
   }
 
   const { imageSource, name, artist, colors, comments } = currentArtPiece;
-
-  console.log("Current Art Piece", currentArtPiece);
 
   return (
     <StyledContainerPage>
