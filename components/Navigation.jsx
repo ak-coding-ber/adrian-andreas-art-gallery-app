@@ -13,7 +13,8 @@ const StyledLayout = styled.div`
 
   .link {
     text-decoration: none;
-    font-size: 30px;
+    font-size: 20px;
+    font-weight: 500;
     color: black;
   }
 `;

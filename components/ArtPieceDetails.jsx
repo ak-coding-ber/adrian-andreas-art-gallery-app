@@ -3,12 +3,40 @@ import Image from "next/image";
 import FavoriteButton from "./FavoriteButton";
 import styled from "styled-components";
 
+const StyledContainerArtPiece = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 120px;
+  .fixed-height-image {
+    width: 380px;
+    max-height: auto;
+  }
+`;
+
+const StyledContainerImage = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 380px;
+  height: 600px;
+  overflow: hidden;
+`;
+
 const StyledContainerInfo = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  max-width: 30%;
+  width: 380px;
+`;
+
+const StyledContainerColors = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 380px;
 `;
 
 const StyledColorCircle = styled.div`
@@ -30,17 +58,17 @@ export default function ArtPieceDetails({
   slug,
 }) {
   return (
-    <>
+    <StyledContainerArtPiece>
       <Link href={"/art-pieces"}>← back</Link>
-      <br />
-      <Image
-        src={image}
-        alt={`image of ${title} by ${artist}`}
-        width={480}
-        height={600}
-        // objectFit="cover"
-        // fill
-      />
+      <StyledContainerImage>
+        <Image
+          src={image}
+          alt={`image of ${title} by ${artist}`}
+          width={480}
+          height={600}
+          className="fixed-height-image"
+        />
+      </StyledContainerImage>
 
       <StyledContainerInfo>
         <p>
@@ -53,7 +81,9 @@ export default function ArtPieceDetails({
           artPiecesInfo={artPiecesInfo}
           slug={slug}
         />
-        <br />
+      </StyledContainerInfo>
+      <br />
+      <StyledContainerColors>
         {colors.map((color, index) => {
           return (
             <div key={index}>
@@ -61,7 +91,7 @@ export default function ArtPieceDetails({
             </div>
           );
         })}
-      </StyledContainerInfo>
-    </>
+      </StyledContainerColors>
+    </StyledContainerArtPiece>
   );
 }

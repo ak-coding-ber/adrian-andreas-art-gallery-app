@@ -3,20 +3,38 @@ import FavoriteButton from "./FavoriteButton";
 import Link from "next/link";
 import styled from "styled-components";
 
+const StyledContainerArtPiece = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10%;
+  margin-top: 120px;
+
+  :hover .fixed-height-image {
+    transform: scale(1.1);
+  }
+
+  .fixed-height-image {
+    height: 480px;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+  }
+`;
+
+const StyledContainerImage = styled.div`
+  width: 320px;
+  height: 480px;
+  overflow: hidden;
+`;
+
 const StyledContainerArtPieceInfo = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   max-width: 320px;
-`;
-
-const StyledContainerArtPiece = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 50%;
 `;
 
 export default function Spotlight({
@@ -30,13 +48,16 @@ export default function Spotlight({
   return (
     <StyledContainerArtPiece>
       <Link href={`/art-pieces/${slug}`}>
-        <Image
-          data-testid="spotlight-image"
-          src={image}
-          alt={`image of ${title} from ${artist}`}
-          width={320}
-          height={480}
-        />
+        <StyledContainerImage>
+          <Image
+            data-testid="spotlight-image"
+            src={image}
+            alt={`image of ${title} from ${artist}`}
+            width={320}
+            height={480}
+            className="fixed-height-image"
+          />
+        </StyledContainerImage>
       </Link>
       <StyledContainerArtPieceInfo>
         <p>
