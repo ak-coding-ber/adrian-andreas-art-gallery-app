@@ -3,11 +3,12 @@ import Image from "next/image";
 import FavoriteButton from "./FavoriteButton";
 import styled from "styled-components";
 
-const StyledContainer = styled.div`
+const StyledContainerInfo = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  max-width: 30%;
 `;
 
 const StyledColorCircle = styled.div`
@@ -37,23 +38,22 @@ export default function ArtPieceDetails({
         alt={`image of ${title} by ${artist}`}
         width={480}
         height={600}
+        // objectFit="cover"
+        // fill
       />
 
-      <StyledContainer>
+      <StyledContainerInfo>
         <p>
           <strong>{`'${title}'`}</strong>
           <br />
           {` _ ${artist}`}
         </p>
-        <br />
         <FavoriteButton
           onToggleFavorite={onToggleFavorite}
           artPiecesInfo={artPiecesInfo}
           slug={slug}
         />
-      </StyledContainer>
-
-      <StyledContainer>
+        <br />
         {colors.map((color, index) => {
           return (
             <div key={index}>
@@ -61,7 +61,7 @@ export default function ArtPieceDetails({
             </div>
           );
         })}
-      </StyledContainer>
+      </StyledContainerInfo>
     </>
   );
 }

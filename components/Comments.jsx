@@ -8,7 +8,7 @@ import { uid } from "uid";
 export default function Comments({ comments }) {
   return (
     <>
-      <h1>Comments:</h1>;
+      <h1>Comments:</h1>
       <ul>
         {comments.map((comment) => {
           if (comments.length === 0) {
