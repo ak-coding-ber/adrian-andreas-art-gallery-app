@@ -7,17 +7,14 @@ const StyledList = styled.ul`
   list-style: none;
   background-color: lightgray;
   width: 380px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding: 0.75rem;
   margin-left: -6%;
   border-radius: 15px;
   margin-bottom: 10px;
 `;
 
 const StyledComment = styled.p`
-  // text-wrap: wrap;
-  // width: 100%;
-  // white-space: nowrap;
+  overflow-wrap: break-word;
 `;
 
 const StyledDate = styled.p`
@@ -35,8 +32,12 @@ export default function Comments({ comments }) {
           }
           return (
             <StyledList key={uid()}>
-              <StyledComment>{comment.commentText}</StyledComment>
-              <StyledDate>{comment.time}</StyledDate>
+              <li>
+                <StyledComment>{comment.commentText}</StyledComment>
+              </li>
+              <li>
+                <StyledDate>{comment.time}</StyledDate>
+              </li>
             </StyledList>
           );
         })}
@@ -44,5 +45,3 @@ export default function Comments({ comments }) {
     </>
   );
 }
-
-// {comment}

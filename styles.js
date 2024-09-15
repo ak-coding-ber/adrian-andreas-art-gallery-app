@@ -8,7 +8,6 @@ export default createGlobalStyle`
   }
 
 body {
-  margin: 0;
   font-family: system-ui;
   background: linear-gradient(120deg, #f0f8ff, #f8f8ff);
   background-size: 200% 200%;
