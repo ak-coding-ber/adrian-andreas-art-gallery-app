@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styled from "styled-components";
 
 const StyledLayout = styled.div`
@@ -19,19 +18,44 @@ const StyledLayout = styled.div`
   }
 `;
 
-export default function Navigation() {
+const NavLink = styled.a`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => (props.$isActive ? "#EAD8C3" : "white")};
+
+  &:hover {
+    background-color: ${(props) => (props.$isActive ? "#EAD8C3" : "#faf0e6")};
+  }
+`;
+
+export default function Navigation({ currentPage }) {
   return (
     <>
       <StyledLayout>
-        <Link href={"/"} className="link">
-          Spotlight
-        </Link>
-        <Link href={"/art-pieces"} className="link">
+        <NavLink
+          href={"/"}
+          className="link"
+          $isActive={currentPage === "/" ? true : false}
+        >
+          Spotlight {}
+        </NavLink>
+        <NavLink
+          href={"/art-pieces"}
+          className="link"
+          $isActive={currentPage === "/art-pieces" ? true : false}
+        >
           Pieces
-        </Link>
-        <Link href={"/favorites"} className="link">
+        </NavLink>
+        <NavLink
+          href={"/favorites"}
+          className="link"
+          $isActive={currentPage === "/favorites" ? true : false}
+        >
           Favorites
-        </Link>
+        </NavLink>
       </StyledLayout>
     </>
   );

@@ -3,9 +3,12 @@ import useSWR from "swr";
 import Layout from "@/components/Layout";
 import { useEffect } from "react";
 import { useImmerLocalStorageState } from "@/lib/hook/useImmerLocalStorageState";
+import { useRouter } from "next/router";
 
 export default function App({ Component, pageProps }) {
   const URL = "https://example-apis.vercel.app/api/art";
+  const router = useRouter();
+  const currentPage = router.pathname;
 
   const [artPiecesInfo, updateArtPiecesInfo] = useImmerLocalStorageState(
     "artPiecesInfo",
@@ -70,7 +73,7 @@ export default function App({ Component, pageProps }) {
         onToggleFavorite={handleToggleFavoriteButton}
         updateArtPiecesInfo={updateArtPiecesInfo}
       />
-      <Layout />
+      <Layout currentPage={currentPage} />
     </>
   );
 }
