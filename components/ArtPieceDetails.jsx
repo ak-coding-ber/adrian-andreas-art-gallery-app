@@ -3,12 +3,17 @@ import Image from "next/image";
 import FavoriteButton from "./FavoriteButton";
 import styled from "styled-components";
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+
 const StyledContainerArtPiece = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 120px;
+  margin-top: 80px;
   .fixed-height-image {
     width: 380px;
     max-height: auto;
@@ -20,23 +25,24 @@ const StyledContainerImage = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 380px;
-  height: 600px;
+  width: 320px;
+  height: 480px;
   overflow: hidden;
 `;
 
-const StyledContainerInfo = styled.div`
+const StyledContainerArtPieceInfo = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 380px;
+  align-items: center;
+  width: 320px;
 `;
 
 const StyledContainerColors = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 380px;
+  width: 320px;
 `;
 
 const StyledColorCircle = styled.div`
@@ -59,18 +65,19 @@ export default function ArtPieceDetails({
 }) {
   return (
     <StyledContainerArtPiece>
-      <Link href={"/art-pieces"}>← back</Link>
+      <StyledLink href={"/art-pieces"}>← back</StyledLink>
+      <br />
       <StyledContainerImage>
         <Image
           src={image}
           alt={`image of ${title} by ${artist}`}
-          width={480}
-          height={600}
+          width={320}
+          height={480}
           className="fixed-height-image"
         />
       </StyledContainerImage>
 
-      <StyledContainerInfo>
+      <StyledContainerArtPieceInfo>
         <p>
           <strong>{`'${title}'`}</strong>
           <br />
@@ -81,7 +88,7 @@ export default function ArtPieceDetails({
           artPiecesInfo={artPiecesInfo}
           slug={slug}
         />
-      </StyledContainerInfo>
+      </StyledContainerArtPieceInfo>
       <br />
       <StyledContainerColors>
         {colors.map((color, index) => {

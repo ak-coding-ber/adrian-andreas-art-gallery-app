@@ -8,7 +8,7 @@ const StyledContainerArtPiece = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10%;
+  margin-bottom: 20%;
   margin-top: 120px;
 
   :hover .fixed-height-image {
@@ -34,7 +34,7 @@ const StyledContainerArtPieceInfo = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  max-width: 320px;
+  width: 320px;
 `;
 
 export default function Spotlight({
