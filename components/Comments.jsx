@@ -6,7 +6,7 @@ const StyledList = styled.ul`
   flex-direction: column;
   list-style: none;
   background-color: lightgray;
-  width: 380px;
+  width: 320px;
   padding: 0.75rem;
   margin-left: -6%;
   border-radius: 15px;

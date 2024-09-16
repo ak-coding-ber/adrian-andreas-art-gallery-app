@@ -21,6 +21,7 @@ const StyledContainerImage = styled.div`
   width: 320px;
   height: 480px;
   overflow: hidden;
+  border: 1px solid darkgray;
 `;
 
 const StyledContainerArtPieceInfo = styled.div`

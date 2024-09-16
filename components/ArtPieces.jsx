@@ -7,7 +7,7 @@ const StyledList = styled.ul`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15%;
+  gap: 10%;
   margin-top: 120px;
   padding-left: 5%;
   padding-right: 5%;

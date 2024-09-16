@@ -4,7 +4,7 @@ import styled from "styled-components";
 const StyledFormContainer = styled.div`
   display: flex;
   flex-direction: row;
-  width: 380px;
+  width: 320px;
   justify-content: space-between;
 `;
 
@@ -48,7 +48,7 @@ export default function CommentForm({
             name="userInput"
             id="textfield "
             type="text"
-            style={{ width: "300px" }}
+            style={{ width: "250px" }}
             placeholder="type here..."
           />
           <button type="submit">Send</button>
