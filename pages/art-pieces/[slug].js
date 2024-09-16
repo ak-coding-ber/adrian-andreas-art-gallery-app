@@ -24,9 +24,6 @@ export default function ArtPieceDetailsPage({
   const { slug } = router.query;
 
   const currentArtPiece = artPiecesInfo.find((piece) => piece.slug === slug);
-  if (!currentArtPiece) {
-    return null;
-  }
 
   const { imageSource, name, artist, colors, comments } = currentArtPiece;
 

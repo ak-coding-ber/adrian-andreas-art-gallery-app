@@ -28,6 +28,10 @@ export default function SpotlightPage({
   onToggleFavorite,
 }) {
   const [randomArtPiece, setRandomArtPiece] = useState([]);
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
   useEffect(() => {
     const randomIndex = getRandomInt(pieces.length);
     setRandomArtPiece(pieces[randomIndex]);
@@ -35,10 +39,6 @@ export default function SpotlightPage({
 
   if (!pieces) {
     return <div>Loading...</div>;
-  }
-
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
   }
 
   return (

@@ -19,8 +19,6 @@ export default function CommentForm({
     const comment = formElements.userInput.value;
     const formattedDate = moment().format("DD-MM-YYYY, HH:mm");
 
-    // console.log(comment);
-
     const updatedArtPiecesInfo = artPiecesInfo.map((piece) => {
       if (piece.slug !== slug) {
         return piece;

@@ -1,7 +1,6 @@
 import GlobalStyle from "../styles";
 import useSWR from "swr";
 import Layout from "@/components/Layout";
-import { useEffect } from "react";
 import { useImmerLocalStorageState } from "@/lib/hook/useImmerLocalStorageState";
 import { useRouter } from "next/router";
 
@@ -42,21 +41,19 @@ export default function App({ Component, pageProps }) {
 
   const { data, isLoading, error } = useSWR(URL, fetcher);
 
-  useEffect(() => {
-    if (data) {
-      if (artPiecesInfo.length === 0) {
-        // Only set the data if the localStorage doesn't have it yet
-        updateArtPiecesInfo(
-          data.map((piece) => ({
-            ...piece,
-            slug: piece.slug,
-            isFavorite: false,
-            comments: [],
-          }))
-        );
-      }
+  if (data) {
+    if (artPiecesInfo.length === 0) {
+      // Only set the data if the localStorage doesn't have it yet
+      updateArtPiecesInfo(
+        data.map((piece) => ({
+          ...piece,
+          slug: piece.slug,
+          isFavorite: false,
+          comments: [],
+        }))
+      );
     }
-  });
+  }
 
   if (error) return <div>{error.message}</div>;
   if (isLoading) {
