@@ -4,7 +4,7 @@ const StyledLayout = styled.div`
   display: flex;
   position: fixed;
   width: 100%;
-  height: 10%;
+  height: 60px;
   bottom: 0;
   background-color: white;
   justify-content: space-around;

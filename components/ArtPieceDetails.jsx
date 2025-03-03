@@ -13,7 +13,6 @@ const StyledContainerArtPiece = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
   .fixed-height-image {
     width: 380px;
     max-height: auto;

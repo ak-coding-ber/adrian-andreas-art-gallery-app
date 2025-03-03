@@ -3,6 +3,7 @@ import useSWR from "swr";
 import Layout from "@/components/Layout";
 import { useImmerLocalStorageState } from "@/lib/hook/useImmerLocalStorageState";
 import { useRouter } from "next/router";
+import Heading from "@/components/Heading";
 
 export default function App({ Component, pageProps }) {
   const URL = "https://example-apis.vercel.app/api/art";
@@ -63,6 +64,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
+      <Heading>Art Gallery</Heading>
       <Component
         {...pageProps}
         pieces={data}

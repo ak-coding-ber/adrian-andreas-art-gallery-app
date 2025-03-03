@@ -1,26 +1,6 @@
 import Spotlight from "@/components/Spotlight";
-import styled from "styled-components";
 import { useEffect } from "react";
 import { useState } from "react";
-
-const StyledHeading = styled.h1`
-  display: flex;
-  justify-content: center;
-  font-size: 65px;
-  animation: colorChange 5s infinite alternate;
-
-  @keyframes colorChange {
-    0% {
-      color: red;
-    }
-    50% {
-      color: green;
-    }
-    100% {
-      color: blue;
-    }
-  }
-`;
 
 export default function SpotlightPage({
   pieces,
@@ -43,7 +23,6 @@ export default function SpotlightPage({
 
   return (
     <>
-      <StyledHeading>Art Gallery</StyledHeading>
       <Spotlight
         image={randomArtPiece.imageSource}
         artist={randomArtPiece.artist}

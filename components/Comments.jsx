@@ -1,6 +1,10 @@
 import { uid } from "uid";
 import styled from "styled-components";
 
+const StyledHeading = styled.h1`
+  margin-bottom: 10px;
+`;
+
 const StyledList = styled.ul`
   display: flex;
   flex-direction: column;
@@ -8,7 +12,6 @@ const StyledList = styled.ul`
   background-color: lightgray;
   width: 320px;
   padding: 0.75rem;
-  margin-left: -6%;
   border-radius: 15px;
   margin-bottom: 10px;
 `;
@@ -24,7 +27,7 @@ const StyledDate = styled.p`
 export default function Comments({ comments }) {
   return (
     <>
-      <h2>Comments:</h2>
+      <StyledHeading>Comments:</StyledHeading>
       <ul>
         {comments.map((comment) => {
           if (comments.length === 0) {

@@ -9,10 +9,10 @@ const StyledContainerPage = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20%;
-  padding-left: 50%;
-  padding-right: 50%;
-  width: 60%;
+  padding-top: 146px;
+  padding-bottom: 146px;
+  width: 100%;
+  height: auto;
 `;
 
 export default function ArtPieceDetailsPage({

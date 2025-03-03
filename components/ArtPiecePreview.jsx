@@ -4,7 +4,7 @@ import FavoriteButton from "./FavoriteButton";
 import styled from "styled-components";
 
 const StyledContainerArtPiece = styled.div`
-  margin-bottom: 50%;
+  margin-bottom: 80px;
   :hover .fixed-height-image {
     transform: scale(1.1);
   }
@@ -30,6 +30,7 @@ const StyledContainerArtPieceInfo = styled.div`
   justify-content: space-between;
   align-items: center;
   max-width: 320px;
+  padding-top: 15px;
 `;
 
 export default function ArtPiecePreview({

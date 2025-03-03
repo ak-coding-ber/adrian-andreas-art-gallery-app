@@ -1,5 +1,12 @@
 import Image from "next/image";
-import { StyledButton } from "./FavoritesStyles";
+import styled from "styled-components";
+
+const StyledButton = styled.button`
+  border: none;
+  background-color: transparent;
+  margin-left: 10px;
+  padding: 0;
+`;
 
 export default function FavoriteButton({
   slug,
